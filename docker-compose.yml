@@ -1,0 +1,37 @@
+version: "3.0"
+
+services:
+  health_main:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: health_app
+    container_name: health_main
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./src/:/var/www/html
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      PHP_IDE_CONFIG: serverName=server
+  
+  health_nginx:
+    image: nginx:latest
+    container_name: health_nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/conf/nginx:/etc/nginx/conf.d
+  
+  health_mysql:
+    image: mysql:latest
+    container_name: health_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: health
+    ports:
+      - "3306:3306"
