@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repository\Tests\TestCategoryRepositoryInterface;
+use App\Contracts\Tests\TestCategoryRepositoryInterface;
 use Illuminate\Http\Request;
 
 class TestCategoryService

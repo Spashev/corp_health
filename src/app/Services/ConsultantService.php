@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repository\Users\ConsultantRepositoryInterface;
+use App\Contracts\Users\ConsultantRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ConsultantService

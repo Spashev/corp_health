@@ -6,7 +6,6 @@ namespace App\Enum;
 
 enum UserAccess: int
 {
-
     case FULL = 1;
     case MOBILE = 2;
 

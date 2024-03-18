@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Repository\Company;
 
+use App\Contracts\Company\CustomerRepositoryInterface;
+use App\Models\Company\Customer;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use App\Models\Company\Customer;
 
 class CustomerRepository implements CustomerRepositoryInterface
 {

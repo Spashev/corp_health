@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Tests;
 
+use App\Contracts\Tests\TestRepositoryInterface;
 use App\Models\Test\Question;
 use App\Models\Test\QuestionAnswer;
 use App\Models\Test\Result;

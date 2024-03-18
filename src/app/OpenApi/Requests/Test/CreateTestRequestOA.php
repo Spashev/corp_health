@@ -12,6 +12,8 @@ namespace App\OpenApi\Requests\Test;
  *         "locale",
  *         "category_id",
  *         "is_active",
+ *         "questions",
+ *         "results"
  *     },
  *     @OA\Property(
  *         property="title",
@@ -38,6 +40,16 @@ namespace App\OpenApi\Requests\Test;
  *         property="is_active",
  *         type="boolean",
  *     ),
+ *     @OA\Property(
+ *         property="questions",
+ *         type="array",
+ *         @OA\Items(ref="#/components/schemas/test_question"),
+ *     ),
+ *     @OA\Property(
+ *         property="results",
+ *         type="array",
+ *         @OA\Items(ref="#/components/schemas/test_result"),
+ *     )
  * )
  */
 class CreateTestRequestOA

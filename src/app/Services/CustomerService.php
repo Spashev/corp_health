@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repository\Company\CustomerRepositoryInterface;
+use App\Contracts\Company\CustomerRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CustomerService

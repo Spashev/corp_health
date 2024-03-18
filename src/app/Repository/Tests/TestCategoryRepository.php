@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Tests;
 
+use App\Contracts\Tests\TestCategoryRepositoryInterface;
 use App\Models\Test\Category;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;

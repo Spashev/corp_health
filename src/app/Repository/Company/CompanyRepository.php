@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Repository\Company;
 
+use App\Contracts\Company\CompanyRepositoryInterface;
+use App\Models\Company\Company;
 use App\Models\Company\Contact;
 use App\Models\Company\Employee;
 use App\Models\Company\Relative;
@@ -13,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use App\Models\Company\Company;
 use Illuminate\Support\Facades\DB;
 
 class CompanyRepository implements CompanyRepositoryInterface

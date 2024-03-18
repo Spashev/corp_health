@@ -2,6 +2,8 @@
 
 namespace App\OpenApi\Controllers;
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Info(
  *     version="1.0.0",
@@ -25,11 +27,6 @@ namespace App\OpenApi\Controllers;
  *     type="http",
  *     scheme="bearer",
  *     bearerFormat="Sanctum",
- * )
- *
- * @OA\Tag(
- *     name="Test",
- *     description="CRUD test part of application.",
  * )
  *
  * @see Controller

@@ -8,7 +8,7 @@ namespace App\OpenApi\Schemas\Objects\Requests\Test;
  *     required={
  *         "title",
  *         "locale",
- *         "question_id",
+ *         "test_id",
  *     },
  *     @OA\Property(
  *         property="title",
@@ -21,7 +21,7 @@ namespace App\OpenApi\Schemas\Objects\Requests\Test;
  *           enum={"kz", "ru", "en", "de", "es", "cn"}
  *      ),
  *       @OA\Property(
- *           property="question_id",
+ *           property="test_id",
  *           type="integer"
  *      ),
  * )

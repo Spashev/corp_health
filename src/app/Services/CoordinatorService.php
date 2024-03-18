@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repository\Users\CoordinatorRepositoryInterface;
+use App\Contracts\Users\CoordinatorRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CoordinatorService

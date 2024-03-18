@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Users;
 
+use App\Contracts\Users\ConsultantRepositoryInterface;
 use App\Enum\UserAccess;
 use App\Enum\UserRole;
 use App\Models\User;

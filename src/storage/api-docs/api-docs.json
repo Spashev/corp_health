@@ -16,14 +16,389 @@
         }
     ],
     "paths": {
-        "api/v1/tests": {
+        "api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate admin user",
+                "description": "Authenticate admin user",
+                "operationId": "Admin authenticate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/auth_user_response"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "api/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register admin user",
+                "description": "Register admin user",
+                "operationId": "Admin register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/auth_user_response"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout admin user",
+                "description": "Logout admin user",
+                "operationId": "Admin logout",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/auth_user_response"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/auth/generate-password/": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Generate a random password",
+                "description": "This endpoint generates a random password.",
+                "operationId": "generatePassword",
+                "responses": {
+                    "204": {
+                        "description": "Password generated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "password": {
+                                            "type": "string",
+                                            "example": "s3cr3tP@ssw0rd"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "{locale}/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticate mobile user",
+                "description": "Authenticate mobile user",
+                "operationId": "Mobile authenticate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/mobile_login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/auth_user_response"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "{locale}/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout mobile user",
+                "description": "Logout mobile user",
+                "operationId": "Mobile logout",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "$ref": "#/components/responses/auth_user_response"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "api/tests/category": {
+            "get": {
+                "tags": [
+                    "TestCategory"
+                ],
+                "summary": "Get all test categories",
+                "description": "Get all test categories",
+                "operationId": "TestCategories",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_category_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "TestCategory"
+                ],
+                "summary": "Update test category",
+                "description": "Update test category",
+                "operationId": "UpdateTestCategory",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_test_category"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_category_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test category not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TestCategory"
+                ],
+                "summary": "Create test category",
+                "description": "Create test category",
+                "operationId": "CreateTestCategory",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_test_category"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_category_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "api/tests/category/{id}": {
+            "get": {
+                "tags": [
+                    "TestCategory"
+                ],
+                "summary": "Show test category",
+                "description": "Show test category",
+                "operationId": "ShowTestCategory",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_category_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test category not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TestCategory"
+                ],
+                "summary": "Delete test category",
+                "description": "Delete test category",
+                "operationId": "DeleteTestCategory",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test category not found"
+                    }
+                }
+            }
+        },
+        "api/tests": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Get all test",
+                "description": "Get all test",
+                "operationId": "Tests",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Update test",
+                "description": "Update test",
+                "operationId": "Update Test",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_test"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test not found"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Test"
                 ],
                 "summary": "Create test",
                 "description": "Create test",
-                "operationId": "SetOrder",
+                "operationId": "CreateTest",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/token_header"
@@ -51,10 +426,678 @@
                     }
                 }
             }
+        },
+        "api/tests/{id}": {
+            "get": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Show test by ID",
+                "description": "Show a test by its ID.",
+                "operationId": "ShowTestById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_test_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Test"
+                ],
+                "summary": "Delete test by ID",
+                "description": "Delete a test by its ID.",
+                "operationId": "DeleteTestById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Test not found"
+                    }
+                }
+            }
+        },
+        "/api/administrators": {
+            "get": {
+                "tags": [
+                    "User/Administrator"
+                ],
+                "summary": "Get all administrators",
+                "description": "Get all administrators",
+                "operationId": "Administrators",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User/Administrator"
+                ],
+                "summary": "Update coordinator",
+                "description": "Update coordinator",
+                "operationId": "UpdateAdministrator",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User/Administrator"
+                ],
+                "summary": "Administrator create",
+                "description": "Administrator create",
+                "operationId": "AdministratorCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/administrators/{id}": {
+            "get": {
+                "tags": [
+                    "User/Administrator"
+                ],
+                "summary": "Show coordinator by ID",
+                "description": "Show coordinator by its ID.",
+                "operationId": "ShowAdministratorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User/Administrator"
+                ],
+                "summary": "Delete coordinator by ID",
+                "description": "Delete coordinator by its ID.",
+                "operationId": "DeleteAdministratorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/api/consultants": {
+            "get": {
+                "tags": [
+                    "User/Consultant"
+                ],
+                "summary": "Get all consultants",
+                "description": "Get all consultants",
+                "operationId": "Consultants",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User/Consultant"
+                ],
+                "summary": "Update coordinator",
+                "description": "Update coordinator",
+                "operationId": "UpdateConsultant",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User/Consultant"
+                ],
+                "summary": "Consultant create",
+                "description": "Consultant create",
+                "operationId": "ConsultantCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/consultants/{id}": {
+            "get": {
+                "tags": [
+                    "User/Consultant"
+                ],
+                "summary": "Show coordinator by ID",
+                "description": "Show coordinator by its ID.",
+                "operationId": "ShowConsultantById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User/Consultant"
+                ],
+                "summary": "Delete coordinator by ID",
+                "description": "Delete coordinator by its ID.",
+                "operationId": "DeleteConsultantById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "/api/coordinators": {
+            "get": {
+                "tags": [
+                    "User/Coordinator"
+                ],
+                "summary": "Get all coordinators",
+                "description": "Get all coordinators",
+                "operationId": "Coordinators",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User/Coordinator"
+                ],
+                "summary": "Update coordinator",
+                "description": "Update coordinator",
+                "operationId": "UpdateCoordinator",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User/Coordinator"
+                ],
+                "summary": "Coordinator create",
+                "description": "Coordinator create",
+                "operationId": "CoordinatorCreate",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/admin_register"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/coordinators/{id}": {
+            "get": {
+                "tags": [
+                    "User/Coordinator"
+                ],
+                "summary": "Show coordinator by ID",
+                "description": "Show coordinator by its ID.",
+                "operationId": "ShowCoordinatorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User/Coordinator"
+                ],
+                "summary": "Delete coordinator by ID",
+                "description": "Delete coordinator by its ID.",
+                "operationId": "DeleteCoordinatorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the test to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        },
+        "api/user/me": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User me",
+                "description": "User me",
+                "operationId": "UserMe",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "404": {
+                        "description": "Bad request"
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
+            "admin_login": {
+                "required": [
+                    "login",
+                    "password"
+                ],
+                "properties": {
+                    "login": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "admin_register": {
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "middle_name",
+                    "email",
+                    "phone",
+                    "role",
+                    "access",
+                    "password",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "middle_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "CLIENT",
+                            "CONSULTANT",
+                            "COORDINATOR",
+                            "ADMINISTRATOR"
+                        ]
+                    },
+                    "access": {
+                        "type": "string",
+                        "enum": [
+                            "FULL",
+                            "MOBIL"
+                        ]
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "password_confirmation": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "mobile_login": {
+                "required": [
+                    "code",
+                    "login",
+                    "password"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "login": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "create_test_category": {
+                "required": [
+                    "title",
+                    "locale"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "enum": [
+                            "kz",
+                            "ru",
+                            "en",
+                            "de",
+                            "es",
+                            "cn"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
             "create_test": {
                 "required": [
                     "title",
@@ -62,7 +1105,9 @@
                     "keywords",
                     "locale",
                     "category_id",
-                    "is_active"
+                    "is_active",
+                    "questions",
+                    "results"
                 ],
                 "properties": {
                     "title": {
@@ -90,6 +1135,18 @@
                     },
                     "is_active": {
                         "type": "boolean"
+                    },
+                    "questions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/test_question"
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/test_result"
+                        }
                     }
                 },
                 "type": "object"
@@ -160,7 +1217,7 @@
                 "required": [
                     "title",
                     "locale",
-                    "question_id"
+                    "test_id"
                 ],
                 "properties": {
                     "title": {
@@ -178,18 +1235,18 @@
                             "cn"
                         ]
                     },
-                    "question_id": {
+                    "test_id": {
                         "type": "integer"
                     }
                 },
                 "type": "object"
             },
-            "items_request": {
+            "test_result": {
                 "required": [
                     "ball",
                     "description",
                     "locale",
-                    "test_id"
+                    "question_id"
                 ],
                 "properties": {
                     "ball": {
@@ -216,9 +1273,250 @@
                     }
                 },
                 "type": "object"
+            },
+            "test_answer_response": {
+                "required": [
+                    "id",
+                    "answer",
+                    "ball",
+                    "locale",
+                    "question_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "answer": {
+                        "type": "string"
+                    },
+                    "ball": {
+                        "type": "integer"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "enum": [
+                            "kz",
+                            "ru",
+                            "en",
+                            "de",
+                            "es",
+                            "cn"
+                        ]
+                    },
+                    "question_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "test_category_response": {
+                "required": [
+                    "id",
+                    "title",
+                    "locale",
+                    "is_active"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title",
+                        "type": "string"
+                    },
+                    "locale": {
+                        "description": "Locale",
+                        "type": "string"
+                    },
+                    "is_active": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "test_question_response": {
+                "required": [
+                    "id",
+                    "title",
+                    "locale",
+                    "test_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title",
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "enum": [
+                            "kz",
+                            "ru",
+                            "en",
+                            "de",
+                            "es",
+                            "cn"
+                        ]
+                    },
+                    "test_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "test_result_response": {
+                "required": [
+                    "id",
+                    "ball",
+                    "description",
+                    "locale",
+                    "question_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "ball": {
+                        "description": "Ball",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description",
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "enum": [
+                            "kz",
+                            "ru",
+                            "en",
+                            "de",
+                            "es",
+                            "cn"
+                        ]
+                    },
+                    "question_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "user_response": {
+                "required": [
+                    "id",
+                    "first_name",
+                    "last_name",
+                    "middle_name",
+                    "email",
+                    "phone",
+                    "role",
+                    "access",
+                    "created_at",
+                    "country_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "middle_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "CLIENT",
+                            "CONSULTANT",
+                            "COORDINATOR",
+                            "ADMINISTRATOR"
+                        ]
+                    },
+                    "access": {
+                        "type": "string",
+                        "enum": [
+                            "FULL",
+                            "MOBIL"
+                        ]
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "country_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
             }
         },
         "responses": {
+            "auth_user_response": {
+                "description": "Auth user response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "token": {
+                                    "type": "string"
+                                },
+                                "user": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/user_response"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "create_test_category_response": {
+                "description": "Test category response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "locale": {
+                                    "type": "string",
+                                    "enum": [
+                                        "kz",
+                                        "ru",
+                                        "en",
+                                        "de",
+                                        "es",
+                                        "cn"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "create_test_response": {
                 "description": "Test response.",
                 "content": {
@@ -226,11 +1524,63 @@
                         "schema": {
                             "properties": {
                                 "id": {
-                                    "description": "test id",
                                     "type": "integer"
                                 },
-                                "created_at": {
-                                    "$ref": "#/components/schemas/date_time"
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "keywords": {
+                                    "type": "string"
+                                },
+                                "locale": {
+                                    "type": "string",
+                                    "enum": [
+                                        "kz",
+                                        "ru",
+                                        "en",
+                                        "de",
+                                        "es",
+                                        "cn"
+                                    ]
+                                },
+                                "category_id": {
+                                    "type": "integer"
+                                },
+                                "is_active": {
+                                    "type": "boolean"
+                                },
+                                "questions": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/test_question_response"
+                                    }
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/test_result_response"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "users_response": {
+                "description": "Test response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/user_response"
+                                    }
                                 }
                             },
                             "type": "object"
@@ -259,11 +1609,5 @@
                 "scheme": "bearer"
             }
         }
-    },
-    "tags": [
-        {
-            "name": "Test",
-            "description": "CRUD test part of application."
-        }
-    ]
+    }
 }

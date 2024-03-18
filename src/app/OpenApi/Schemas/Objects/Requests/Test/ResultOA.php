@@ -5,12 +5,12 @@ namespace App\OpenApi\Schemas\Objects\Requests\Test;
 
 /**
  * @OA\Schema(
- *     schema="items_request",
+ *     schema="test_result",
  *     required={
  *         "ball",
  *         "description",
  *         "locale",
- *         "test_id",
+ *         "question_id",
  *     },
  *      @OA\Property(
  *          property="ball",

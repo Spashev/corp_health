@@ -20,10 +20,8 @@ class StoreAdministratorResource extends JsonResource
             'phone' => $this->phone,
             'role' => $this->role->name,
             'access' => $this->access->name,
-            'email_verified_at' => $this->email_verified_at,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'country_id' => $this->country_id,
         ];
     }

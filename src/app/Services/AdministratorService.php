@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Repository\Users\AdministratorRepositoryInterface;
+use App\Contracts\Users\AdministratorRepositoryInterface;
 use Illuminate\Http\Request;
 
 class AdministratorService
