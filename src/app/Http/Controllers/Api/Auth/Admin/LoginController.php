@@ -8,7 +8,7 @@ use App\Enum\UserAccess;
 use App\Enum\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Admin\LoginRequest;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 

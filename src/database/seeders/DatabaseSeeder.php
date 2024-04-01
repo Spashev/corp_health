@@ -14,16 +14,14 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-         \App\Models\User::factory()->create([
-            "first_name"=> "Administrator",
-            "last_name"=> "Root",
-            "middle_name"=> "test",
-            "email"=> "admin@gmail.com",
-            "phone"=> "77777777777",
-            "role"=> UserRole::ADMINISTRATOR,
-            "access"=> UserAccess::FULL,
-            "password"=> Hash::make('root'),
-            'remember_token' => Str::random(10),
-         ]);
+        $this->call(CountryCitySeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(LanguageSeeder::class);
+        $this->call(CustomerCategorySeeder::class);
+        $this->call(ApplicationTypeSeeder::class);
+        $this->call(HandlingMethodSeeder::class);
+        $this->call(TreatmentCategorySeeder::class);
+        $this->call(FindOutSeeder::class);
+        $this->call(ConsultationFormatSeeder::class);
     }
 }

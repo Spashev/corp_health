@@ -2,6 +2,8 @@
 
 namespace App\OpenApi\Requests\Test;
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Schema(
  *     schema="create_test_category",

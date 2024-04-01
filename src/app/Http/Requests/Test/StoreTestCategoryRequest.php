@@ -21,7 +21,7 @@ class StoreTestCategoryRequest extends ApiRequests
         return [
             'title' => 'required|string|min:3|max:500',
             'is_active' => 'boolean',
-            'locale' => 'string|in:' . implode(',', $languages),
+            'locale' => 'required|string|in:' . implode(',', $languages),
         ];
     }
 }

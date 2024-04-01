@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace App\Repository\Users;
 
 use App\Contracts\Users\UserLogsRepositoryInterface;
-use App\Models\User;
-use App\Models\UserActionLog;
+use App\Models\User\UserActionLog;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserLogsRepository implements UserLogsRepositoryInterface

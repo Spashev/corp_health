@@ -3,6 +3,8 @@
 namespace App\OpenApi\Schemas\Objects\Requests\Test;
 
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Schema(
  *     schema="test_result",

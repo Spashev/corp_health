@@ -2,6 +2,8 @@
 
 namespace App\OpenApi\Resources\Test;
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Response(
  *     response="create_test_response",

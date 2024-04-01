@@ -7,7 +7,7 @@ namespace App\Repository\Users;
 use App\Contracts\Users\AdministratorRepositoryInterface;
 use App\Enum\UserAccess;
 use App\Enum\UserRole;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -39,6 +39,7 @@ class AdministratorRepository implements AdministratorRepositoryInterface
             'role' => UserRole::ADMINISTRATOR,
             'access' => $access,
             'country_id' => $request->get('country_id'),
+            'city_id' => $request->get('city_id'),
             'password' => bcrypt($request->get('password'))
         ]);
     }
@@ -54,6 +55,7 @@ class AdministratorRepository implements AdministratorRepositoryInterface
             'phone',
             'access',
             'country_id',
+            'city_id',
             'password'
         ]))
             ->filter()

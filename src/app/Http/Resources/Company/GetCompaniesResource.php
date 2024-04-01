@@ -59,11 +59,7 @@ class GetCompaniesResource extends JsonResource
             'relatives' => $this->relatives->map(function ($relative) {
                 return [
                     'id' => $relative->id,
-                    'partner' => $relative->partner,
-                    'children' => $relative->children,
-                    'parents' => $relative->parents,
-                    'sisters_brothers' => $relative->sisters_brothers,
-                    'other' => $relative->other,
+                    'customer_category_id' => $relative->customer_category_id,
                     'psychological_consulting' => $relative->psychological_consulting,
                     'legal_consulting' => $relative->legal_consulting,
                     'coaching' => $relative->coaching,

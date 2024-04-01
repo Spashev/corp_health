@@ -177,6 +177,525 @@
                 }
             }
         },
+        "api/companies": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Get all company",
+                "description": "Get all company",
+                "operationId": "Companys",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_company_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Update company",
+                "description": "Update company",
+                "operationId": "Update Company",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_company"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_company_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Create company",
+                "description": "Create company",
+                "operationId": "CreateCompany",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_company"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_company_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "api/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Show company by ID",
+                "description": "Show a company by its ID.",
+                "operationId": "ShowCompanyById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the company",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_company_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Company"
+                ],
+                "summary": "Delete company by ID",
+                "description": "Delete a company by its ID.",
+                "operationId": "DeleteCompanyById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the company to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                }
+            }
+        },
+        "api/company/customers": {
+            "get": {
+                "tags": [
+                    "CompanyCustomer"
+                ],
+                "summary": "Get all customer",
+                "description": "Get all customer",
+                "operationId": "CompanyCustomers",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_customer_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "CompanyCustomer"
+                ],
+                "summary": "Update customer",
+                "description": "Update customer",
+                "operationId": "Update CompanyCustomer",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_customer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_customer_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "CompanyCustomer not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CompanyCustomer"
+                ],
+                "summary": "Create customer",
+                "description": "Create customer",
+                "operationId": "CreateCompanyCustomer",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_customer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_customer_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "api/company/customers/{id}": {
+            "get": {
+                "tags": [
+                    "CompanyCustomer"
+                ],
+                "summary": "Show customer by ID",
+                "description": "Show a customer by its ID.",
+                "operationId": "ShowCompanyCustomerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the customer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_customer_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "CompanyCustomer not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "CompanyCustomer"
+                ],
+                "summary": "Delete customer by ID",
+                "description": "Delete a customer by its ID.",
+                "operationId": "DeleteCompanyCustomerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the customer to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "CompanyCustomer not found"
+                    }
+                }
+            }
+        },
+        "api/countries": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get all country",
+                "description": "Get all country",
+                "operationId": "Countries",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_country_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Update country",
+                "description": "Update country",
+                "operationId": "Update Country",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_country"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_country_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Country not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Create country",
+                "description": "Create country",
+                "operationId": "CreateCountry",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/create_country"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_country_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "api/countries/{id}": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Show country by ID",
+                "description": "Show a country by its ID.",
+                "operationId": "ShowCountryById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the country",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/create_country_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Country not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Delete country by ID",
+                "description": "Delete a country by its ID.",
+                "operationId": "DeleteCountryById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the country to be deleted",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/token_header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Country not found"
+                    }
+                }
+            }
+        },
         "api/tests/category": {
             "get": {
                 "tags": [
@@ -959,6 +1478,27 @@
                 }
             }
         },
+        "/api/users/logs": {
+            "get": {
+                "tags": [
+                    "User/Logs"
+                ],
+                "summary": "Get all users logs",
+                "description": "Get all users logs",
+                "operationId": "UserActionLogs",
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/users_actions_logs_response"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "api/user/me": {
             "get": {
                 "tags": [
@@ -1075,6 +1615,164 @@
                 },
                 "type": "object"
             },
+            "create_company": {
+                "required": [
+                    "status",
+                    "company_identify",
+                    "customer_id",
+                    "company_code",
+                    "name",
+                    "name_en",
+                    "contract_period",
+                    "signature_date",
+                    "feedback_link",
+                    "mobile_app",
+                    "mobile_company_code",
+                    "mobile_manager_code",
+                    "mobile_partner_id",
+                    "mobile_organization_id",
+                    "subsidiaries",
+                    "countries",
+                    "contacts",
+                    "employees",
+                    "relatives"
+                ],
+                "properties": {
+                    "company_code": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "company_identify": {
+                        "type": "string"
+                    },
+                    "customer_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "name_en": {
+                        "type": "string"
+                    },
+                    "contract_period": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "signature_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "feedback_link": {
+                        "type": "string"
+                    },
+                    "mobile_app": {
+                        "type": "boolean"
+                    },
+                    "mobile_company_code": {
+                        "type": "string"
+                    },
+                    "mobile_manager_code": {
+                        "type": "string"
+                    },
+                    "mobile_partner_id": {
+                        "type": "string"
+                    },
+                    "mobile_organization_id": {
+                        "type": "string"
+                    },
+                    "subsidiaries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/company_subsidiaries"
+                        }
+                    },
+                    "countries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/comapny_countries"
+                        }
+                    },
+                    "contacts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/company_contract"
+                        }
+                    },
+                    "employees": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/company_employee"
+                        }
+                    },
+                    "relatives": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/company_relative"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "create_customer": {
+                "required": [
+                    "code",
+                    "name",
+                    "name_en",
+                    "partner_id",
+                    "start_date",
+                    "maintain",
+                    "status"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "name_en": {
+                        "type": "string"
+                    },
+                    "partner_id": {
+                        "type": "integer"
+                    },
+                    "start_date": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "maintain": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "create_country": {
+                "required": [
+                    "name",
+                    "code",
+                    "cities"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "cities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/cities_create"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "create_test_category": {
                 "required": [
                     "title",
@@ -1160,6 +1858,177 @@
                 "type": "string",
                 "format": "date-time",
                 "example": "2023:01:01 00:00"
+            },
+            "comapny_city": {
+                "required": [
+                    "city_id"
+                ],
+                "properties": {
+                    "city_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "company_contract": {
+                "required": [
+                    "full_name",
+                    "phone",
+                    "email",
+                    "skype",
+                    "address"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "Name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Name",
+                        "type": "string"
+                    },
+                    "skype": {
+                        "description": "Name",
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "comapny_countries": {
+                "required": [
+                    "country_id",
+                    "city"
+                ],
+                "properties": {
+                    "country_id": {
+                        "type": "integer"
+                    },
+                    "city": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/comapny_city"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "company_employee": {
+                "required": [
+                    "full_time",
+                    "part_time",
+                    "psychological_consulting",
+                    "legal_consulting",
+                    "coaching",
+                    "concierge_service",
+                    "webinars"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "boolean"
+                    },
+                    "part_time": {
+                        "type": "boolean"
+                    },
+                    "psychological_consulting": {
+                        "type": "integer"
+                    },
+                    "legal_consulting": {
+                        "type": "integer"
+                    },
+                    "coaching": {
+                        "type": "integer"
+                    },
+                    "concierge_service": {
+                        "type": "integer"
+                    },
+                    "webinars": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "company_relative": {
+                "required": [
+                    "customer_category_id",
+                    "psychological_consulting",
+                    "legal_consulting",
+                    "coaching",
+                    "concierge_service",
+                    "webinars"
+                ],
+                "properties": {
+                    "customer_category_id": {
+                        "type": "integer"
+                    },
+                    "psychological_consulting": {
+                        "type": "integer"
+                    },
+                    "legal_consulting": {
+                        "type": "integer"
+                    },
+                    "coaching": {
+                        "type": "integer"
+                    },
+                    "concierge_service": {
+                        "type": "integer"
+                    },
+                    "webinars": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "company_subsidiaries": {
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "cities_create": {
+                "required": [
+                    "name",
+                    "postcode"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "county_result": {
+                "required": [
+                    "name",
+                    "code"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "name",
+                        "type": "string"
+                    },
+                    "code": {
+                        "description": "code",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             },
             "test_answer": {
                 "required": [
@@ -1270,6 +2139,57 @@
                     },
                     "question_id": {
                         "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "create_city_response": {
+                "required": [
+                    "id",
+                    "name",
+                    "postcode"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "description": "postcode",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "create_country_response": {
+                "required": [
+                    "id",
+                    "name",
+                    "code",
+                    "cities"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string"
+                    },
+                    "code": {
+                        "description": "code",
+                        "type": "string"
+                    },
+                    "cities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/create_city_response"
+                        }
                     }
                 },
                 "type": "object"
@@ -1407,6 +2327,35 @@
                 },
                 "type": "object"
             },
+            "user_log_response": {
+                "required": [
+                    "id",
+                    "full_name",
+                    "role",
+                    "action",
+                    "date"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "order id",
+                        "type": "integer"
+                    },
+                    "full_name": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "action": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
             "user_response": {
                 "required": [
                     "id",
@@ -1480,6 +2429,184 @@
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/components/schemas/user_response"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "create_company_response": {
+                "description": "Customer response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "company_code": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "boolean"
+                                },
+                                "company_identify": {
+                                    "type": "string"
+                                },
+                                "customer_id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "name_en": {
+                                    "type": "string"
+                                },
+                                "contract_period": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "signature_date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "feedback_link": {
+                                    "type": "string"
+                                },
+                                "mobile_app": {
+                                    "type": "boolean"
+                                },
+                                "mobile_company_code": {
+                                    "type": "string"
+                                },
+                                "mobile_manager_code": {
+                                    "type": "string"
+                                },
+                                "mobile_partner_id": {
+                                    "type": "string"
+                                },
+                                "mobile_organization_id": {
+                                    "type": "string"
+                                },
+                                "subsidiaries": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company_subsidiaries"
+                                    }
+                                },
+                                "countries": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/comapny_countries"
+                                    }
+                                },
+                                "contacts": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company_contract"
+                                    }
+                                },
+                                "employees": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company_employee"
+                                    }
+                                },
+                                "relatives": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/company_relative"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "create_customer_response": {
+                "description": "Customer response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "name_en": {
+                                    "type": "string"
+                                },
+                                "partner_id": {
+                                    "type": "integer"
+                                },
+                                "start_date": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "maintain": {
+                                    "type": "boolean"
+                                },
+                                "status": {
+                                    "type": "boolean"
+                                },
+                                "created_at": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "city_result_response": {
+                "description": "City response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "postcode": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "create_country_response": {
+                "description": "Country response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "cities": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/cities_create"
                                     }
                                 }
                             },
@@ -1562,6 +2689,24 @@
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/components/schemas/test_result_response"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "users_actions_logs_response": {
+                "description": "User action logs response.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/user_log_response"
                                     }
                                 }
                             },

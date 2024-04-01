@@ -8,7 +8,7 @@ use App\Http\Requests\Users\Administrator\UpdateAdministratorRequest;
 use App\Http\Resources\Users\Administrator\GetAdministratorResource;
 use App\Http\Resources\Users\Administrator\GetAdministratorsResource;
 use App\Http\Resources\Users\Administrator\StoreAdministratorResource;
-use App\Models\User;
+use App\Models\User\User;
 use App\Services\AdministratorService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;

@@ -81,10 +81,10 @@ class CompanyRepository implements CompanyRepositoryInterface
 
     public function update(int $id, Request $request): Model|Collection|Builder|array|null
     {
-        return DB::transaction(static function () use ($request, $id) {
-            $company = Company::query()->findOrFail($id);
+        return DB::transaction(function () use ($request, $id) {
+            $company = Company::findOrFail($id);
 
-            $companyData = collect($request->only([
+            $companyData = $request->only([
                 'status',
                 'company_identify',
                 'customer_id',
@@ -99,43 +99,79 @@ class CompanyRepository implements CompanyRepositoryInterface
                 'mobile_manager_code',
                 'mobile_partner_id',
                 'mobile_organization_id',
-            ]))
-                ->filter()
-                ->toArray();
+            ]);
 
             $company->fill($companyData)->save();
 
-            if ($request->has('subsidiaries')) {
-                foreach ($request->get('subsidiaries') as $subsidiary) {
-                    Subsidiary::query()->updateOrCreate([
-                        'name' => $subsidiary['name'],
-                        'company_id' => $company->id
-                    ]);
+            if ($request->has('employees')) {
+                foreach ($request->employees as $employeeData) {
+                    if (isset($employeeData['id'])) {
+                        $employee = $company->employees()->find($employeeData['id']);
+                    } else {
+                        $employee = null;
+                    }
+
+                    if ($employee) {
+                        $employee->update($employeeData);
+                    } else {
+                        $company->employees()->create($employeeData);
+                    }
                 }
             }
 
             if ($request->has('contacts')) {
-                foreach ($request->get('contacts') as $contact) {
-                    Contact::query()->updateOrCreate($contact + ['company_id' => $company->id]);
+                foreach ($request->contacts as $contactData) {
+                    if (isset($contactData['id'])) {
+                        $contact = $company->contacts()->find($contactData['id']);
+                    } else {
+                        $contact = null;
+                    }
+
+                    if ($contact) {
+                        $contact->update($contactData);
+                    } else {
+                        $company->contacts()->create($contactData);
+                    }
                 }
             }
 
-            if ($request->has('employees')) {
-                foreach ($request->get('employees') as $employee) {
-                    Employee::query()->updateOrCreate($employee + ['company_id' => $company->id]);
+            if ($request->has('subsidiaries')) {
+                foreach ($request->subsidiaries as $subsidiaryData) {
+                    if (isset($subsidiaryData['id'])) {
+                        $subsidiary = $company->subsidiaries()->find($subsidiaryData['id']);
+                    } else {
+                        $subsidiary = null;
+                    }
+
+                    if ($subsidiary) {
+                        $subsidiary->update($subsidiaryData);
+                    } else {
+                        $company->subsidiaries()->create($subsidiaryData);
+                    }
                 }
             }
+            
             if ($request->has('relatives')) {
-                foreach ($request->get('relatives') as $relative) {
-                    Relative::query()->updateOrCreate($relative + ['company_id' => $company->id]);
+                foreach ($request->relatives as $relativeData) {
+                    if (isset($relativeData['id'])) {
+                        $relative = $company->relatives()->find($relativeData['id']);
+                    } else {
+                        $relative = null;
+                    }
+
+                    if ($relative) {
+                        $relative->update($relativeData);
+                    } else {
+                        $company->relatives()->create($relativeData);
+                    }
                 }
             }
 
             if ($request->has('countries')) {
                 foreach ($request->get('countries') as $country) {
-                    $company->countries()->attach($country['country_id']);
+                    $company->countries()->sync($country);
                     foreach ($country['city'] as $city) {
-                        $company->cities()->attach($city['city_id']);
+                        $company->cities()->sync($city);
                     }
                 }
             }

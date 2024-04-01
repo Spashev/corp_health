@@ -11,14 +11,6 @@ class Relative extends Model
     use HasFactory;
     
     protected $guarded = [];
-    
-    protected $casts = [
-        'partner' => 'boolean',
-        'children' => 'boolean',
-        'parents' => 'boolean',
-        'sisters_brothers' => 'boolean',
-        'other' => 'boolean',
-    ];
 
     public function company(): BelongsTo
     {

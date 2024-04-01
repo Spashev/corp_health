@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('role')->default(UserRole::CLIENT);
             $table->string('access')->default(UserAccess::MOBILE);
             $table->unsignedBigInteger('country_id')->index()->nullable();
+            $table->unsignedBigInteger('city_id')->index()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_active')->default(true);
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('country_id')->references('id')->on('countries')->cascadeOnDelete();
+            $table->foreign('city_id')->references('id')->on('cities')->cascadeOnDelete();
         });
     }
 

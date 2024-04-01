@@ -8,7 +8,7 @@ use App\Http\Requests\Users\Consultant\UpdateConsultantRequest;
 use App\Http\Resources\Users\Consultant\GetConsultantResource;
 use App\Http\Resources\Users\Consultant\GetConsultantsResource;
 use App\Http\Resources\Users\Consultant\StoreConsultantResource;
-use App\Models\User;
+use App\Models\User\User;
 use App\Services\ConsultantService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;

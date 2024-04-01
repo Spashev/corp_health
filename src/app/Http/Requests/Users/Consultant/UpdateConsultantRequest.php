@@ -19,7 +19,8 @@ class UpdateConsultantRequest extends ApiRequests
             'middle_name' => 'sometimes|string',
             'phone' => 'sometimes|string|max:11',
             'access' => 'sometimes|string|in:FULL,MOBILE',
-            'country_id' => 'sometimes|integer',
+            'country_id' => 'sometimes|integer|exists:countries,id',
+            'city_id' => 'sometimes|integer|exists:cities,id',
             'email' => 'sometimes|email|unique:users,email',
             'password' => 'sometimes|string|confirmed|min:4'
         ];

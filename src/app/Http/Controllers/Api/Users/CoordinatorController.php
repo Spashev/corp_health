@@ -10,7 +10,7 @@ use App\Http\Requests\Users\Coordinator\UpdateCoordinatorRequest;
 use App\Http\Resources\Users\Coordinator\GetCoordinatorResource;
 use App\Http\Resources\Users\Coordinator\GetCoordinatorsResource;
 use App\Http\Resources\Users\Coordinator\StoreCoordinatorResource;
-use App\Models\User;
+use App\Models\User\User;
 use App\Services\CoordinatorService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;

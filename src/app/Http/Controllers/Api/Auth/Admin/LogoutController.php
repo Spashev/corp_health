@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\Auth\Admin;
 
 use App\Enum\UserRole;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

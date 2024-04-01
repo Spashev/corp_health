@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Test;
 
 use App\Http\Requests\ApiRequests;
+use Illuminate\Support\Facades\Config;
 
 class UpdateTestRequest extends ApiRequests
 {
@@ -15,6 +16,8 @@ class UpdateTestRequest extends ApiRequests
 
     public function rules(): array
     {
+        $languages = Config::get('languages');
+        
         return [
             'title' => 'sometimes|string|min:3|max:500',
             'description' => 'nullable|string',
@@ -31,6 +34,7 @@ class UpdateTestRequest extends ApiRequests
             'results.*.id' => 'sometimes|integer',
             'results.*.ball' => 'sometimes|integer',
             'results.*.description' => 'sometimes|string',
+            'locale' => 'string|in:' . implode(',', $languages),
         ];
     }
 }

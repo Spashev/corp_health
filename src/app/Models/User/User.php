@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 use App\Models\Location\Country;
 use App\Models\Test\Builder\UserQueryBuilder;
@@ -24,7 +24,8 @@ class User extends Authenticatable
         'role',
         'access',
         'password',
-        'country_id'
+        'country_id',
+        'city_id'
     ];
 
     protected $hidden = [

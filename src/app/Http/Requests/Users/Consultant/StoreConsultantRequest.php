@@ -19,7 +19,8 @@ class StoreConsultantRequest extends ApiRequests
             'middle_name' => 'string',
             'phone' => 'string|max:11',
             'access' => 'string|in:FULL,MOBILE',
-            'country_id' => 'integer',
+            'country_id' => 'integer|exists:countries,id',
+            'city_id' => 'integer|exists:cities,id',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|confirmed|min:4'
         ];

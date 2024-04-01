@@ -30,11 +30,13 @@ class RouteServiceProvider extends ServiceProvider
                     base_path('routes/api/admin/users.php'),
                     base_path('routes/api/admin/company.php'),
                     base_path('routes/api/admin/articles.php'),
+                    base_path('routes/api/admin/services.php'),
+                    base_path('routes/api/admin/country.php'),
                     
                     base_path('routes/api/mobile/auth.php'),
                 ]);
 
-            Route::middleware('api')
+            Route::middleware(['api', 'localization'])
                 ->prefix('{locale}/api')
                 ->group([
                     base_path('routes/api/mobile/auth.php'),

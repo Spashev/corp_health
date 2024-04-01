@@ -56,11 +56,7 @@ class StoreCompanyRequest extends ApiRequests
             'employees.*.webinars' => 'required|integer',
 
             'relatives' => 'required|array',
-            'relatives.*.partner' => 'required|boolean',
-            'relatives.*.children' => 'required|boolean',
-            'relatives.*.parents' => 'required|boolean',
-            'relatives.*.sisters_brothers' => 'required|boolean',
-            'relatives.*.other' => 'required|boolean',
+            'relatives.*.customer_category_id' => 'required|integer|exists:customer_categories,id',
             'relatives.*.psychological_consulting' => 'required|integer',
             'relatives.*.legal_consulting' => 'required|integer',
             'relatives.*.coaching' => 'required|integer',

@@ -25,6 +25,7 @@ class StoreCoordinatorResource extends JsonResource
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
             'country_id' => $this->country_id,
+            'city_id' => $this->city_id,
         ];
     }
 }

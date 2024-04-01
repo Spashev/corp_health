@@ -32,7 +32,7 @@ class StoreTestRequest extends ApiRequests
             'results' => 'required|array',
             'results.*.ball' => 'required|integer',
             'results.*.description' => 'required|string',
-            'locale' => 'string|in:' . implode(',', $languages),
+            'locale' => 'required|string|in:' . implode(',', $languages),
         ];
     }
 }

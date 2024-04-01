@@ -56,11 +56,7 @@ class UpdateCompanyRequest extends ApiRequests
             'employees.*.webinars' => 'sometimes|integer',
 
             'relatives' => 'sometimes|array',
-            'relatives.*.partner' => 'sometimes|boolean',
-            'relatives.*.children' => 'sometimes|boolean',
-            'relatives.*.parents' => 'sometimes|boolean',
-            'relatives.*.sisters_brothers' => 'sometimes|boolean',
-            'relatives.*.other' => 'sometimes|boolean',
+            'relatives.*.customer_category_id' => 'sometimes|integer|exists:customer_categories,id',
             'relatives.*.psychological_consulting' => 'sometimes|integer',
             'relatives.*.legal_consulting' => 'sometimes|integer',
             'relatives.*.coaching' => 'sometimes|integer',

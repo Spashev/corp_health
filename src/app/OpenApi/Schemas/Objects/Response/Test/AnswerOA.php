@@ -2,6 +2,8 @@
 
 namespace App\OpenApi\Schemas\Objects\Response\Test;
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Schema(
  *     schema="test_answer_response",

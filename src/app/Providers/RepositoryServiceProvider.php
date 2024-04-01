@@ -7,6 +7,9 @@ namespace App\Providers;
 use App\Contracts\Articles\ArticleRepositoryInterface;
 use App\Contracts\Company\CompanyRepositoryInterface;
 use App\Contracts\Company\CustomerRepositoryInterface;
+use App\Contracts\Location\CountryRepositoryInterface;
+use App\Contracts\Location\LanguageRepositoryInterface;
+use App\Contracts\Services\ServiceRepositoryInterface;
 use App\Contracts\Tests\TestCategoryRepositoryInterface;
 use App\Contracts\Tests\TestRepositoryInterface;
 use App\Contracts\Users\AdministratorRepositoryInterface;
@@ -16,6 +19,9 @@ use App\Contracts\Users\UserLogsRepositoryInterface;
 use App\Repository\Articles\ArticleRepository;
 use App\Repository\Company\CompanyRepository;
 use App\Repository\Company\CustomerRepository;
+use App\Repository\Location\CountryRepository;
+use App\Repository\Location\LanguageRepository;
+use App\Repository\Services\MainServiceRepository;
 use App\Repository\Tests\TestCategoryRepository;
 use App\Repository\Tests\TestRepository;
 use App\Repository\Users\AdministratorRepository;
@@ -37,6 +43,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
         $this->app->bind(UserLogsRepositoryInterface::class, UserLogsRepository::class);
         $this->app->bind(ArticleRepositoryInterface::class, ArticleRepository::class);
+        $this->app->bind(ServiceRepositoryInterface::class, MainServiceRepository::class);
+        $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
+        $this->app->bind(LanguageRepositoryInterface::class, LanguageRepository::class);
     }
 
     public function boot(): void
